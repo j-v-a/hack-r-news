@@ -137,12 +137,12 @@ class App extends Component {
 						onChange={this.onSearchChange}
 						onSubmit={this.onSearchSubmit}
 					>
-						Search
+						Search!
 					</Search>
 				</div>
 				{error ? (
 					<div className="interactions">
-						<p>Something went wrong.</p>
+						<p>Oops! Something went wrong.</p>
 					</div>
 				) : (
 					<Table list={list} onDismiss={this.onDismiss} />
@@ -196,3 +196,5 @@ const Table = ({ list, onDismiss }) => (
 );
 
 export default App;
+
+export { Button, Search, Table };
