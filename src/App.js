@@ -153,15 +153,12 @@ class App extends Component {
 					<Table list={list} onDismiss={this.onDismiss} />
 				)}
 				<div className="interactions">
-					{isLoading ? (
-						<Loading />
-					) : (
-						<Button
-							onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
-						>
-							More
-						</Button>
-					)}
+					<ButtonWithLoading
+						isLoading={isLoading}
+						onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+					>
+						Advanced React Components 155 More
+					</ButtonWithLoading>
 				</div>
 			</div>
 		);
@@ -183,6 +180,13 @@ Button.propTypes = {
 	className: PropTypes.string,
 	children: PropTypes.node.isRequired
 };
+
+const Loading = () => <div>Loading ...</div>;
+
+const withLoading = Component => ({ isLoading, ...rest }) =>
+	isLoading ? <Loading /> : <Component {...rest} />;
+
+const ButtonWithLoading = withLoading(Button);
 
 class Search extends Component {
 	componentDidMount() {
@@ -251,8 +255,6 @@ Table.propTypes = {
 	).isRequired,
 	onDismiss: PropTypes.func.isRequired
 };
-
-const Loading = () => <div>Loading ...</div>;
 
 export default App;
 
